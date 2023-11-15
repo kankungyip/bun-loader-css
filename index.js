@@ -32,10 +32,10 @@ export default function CSSLoader(option) {
         return {
           contents: `
             export default function (text) {
-              const style = globalThis.document.createElement('style');
-              const node = globalThis.document.createTextNode(text);
-              style.appendChild(node);
-              globalThis.document.head.appendChild(style);
+              const document = globalThis.document;
+              const style = document.createElement('style');
+              style.appendChild(document.createTextNode(text));
+              document.head.append(style);
             }
           `,
           loader: 'js',
